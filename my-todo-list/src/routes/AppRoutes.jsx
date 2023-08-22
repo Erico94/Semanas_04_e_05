@@ -4,9 +4,7 @@ export default function AppRoutes(){
     return(
         <BrowserRouter>
             <Routes>
-                <Route>
-
-                </Route>
+                <Route/>
             </Routes>
         </BrowserRouter>
     )
