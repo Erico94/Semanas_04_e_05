@@ -5,7 +5,7 @@ export const HomePage = () => {
   return (
     <div>
         HomePage
-        <CardComponent/>
+        
         </div>
   )
 }
