@@ -3,45 +3,60 @@ import ButtonComponent from "../button/ButtonComponent";
 import { set, useForm } from "react-hook-form";
 import PropTypes from "prop-types";
 
-export const FormComponent = (todo) => {
-  const { register, handleSubmit, setValue, formState:{errors} } = useForm();
+export const FormComponent = ({todo}) => {
+  const {
+    register,
+    handleSubmit,
+    setValue,
+    formState: { errors },
+  } = useForm();
 
   const onSubmit = (data) => {
     console.log(data);
   };
 
-  useEffect (()=>{
-    if(todo){
-      setValue('title', todo.title);
-      setValue('description', todo.description);
+  useEffect(() => {
+    if (todo) {
+      setValue("title", todo.title);
+      setValue("description", todo.description);
     }
-  },[])
+  }, [todo]);
 
   return (
     <form className="FormTodo" onSubmit={handleSubmit(onSubmit)}>
-      <legend className="FormTitle">Criar uma noa tarefa</legend>
+    
+        <legend className="FormTitle">
+          {!todo ? 'Criar nova tarefa' : `Editar tarefa ${todo.title}`}
+        </legend>
+
       <div className="InputContainer">
         <div className="InputGroup">
           <label htmlFor="title">Título</label>
-          <input type="text" id="title" {... register('title', {
-            required: '*Este camo é obrigatório.'
-          })}/>
-        {errors.title && <p>
-          {errors.title.message}
-          </p>}
+          <input
+            type="text"
+            id="title"
+            {...register("title", {
+              required: "*Este campo é obrigatório.",
+            })}
+          />
+          {errors.title && <p>{errors.title.message}</p>}
         </div>
+
         <div className="InputGroup">
           <label htmlFor="description">Descrição</label>
-          <textarea id="description" cols="30" rows="10" {... register('description', {
-            required: '* Este campo é obrigatório.',
-            maxLength:{
-              value: 50,
-              message: 'Esse campo deve possuir no máximo 50 caracteres.'
-            }
-          })}></textarea>
-           {errors.description && <p>
-          {errors.title.message}
-          </p>}
+          <textarea
+            id="description"
+            cols="30"
+            rows="10"
+            {...register("description", {
+              required: "* Este campo é obrigatório.",
+              maxLength: {
+                value: 50,
+                message: "Esse campo deve possuir no máximo 50 caracteres.",
+              },
+            })}
+          ></textarea>
+          {errors.description && <p>{errors.title.message}</p>}
         </div>
       </div>
 

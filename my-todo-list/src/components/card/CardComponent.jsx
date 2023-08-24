@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 export const CardComponent = ({ todo }) => {
   const { id, title, description } = todo;
   const navigate = useNavigate();
+  
   const handleEdit = () => {
     navigate(`/todo/${id}`);
   };
@@ -18,12 +19,14 @@ export const CardComponent = ({ todo }) => {
   };
 
 
+  
+
 
 
   return (
     <div className="cardContainer">
-      <h3 className="title"> Titulo da tarefa</h3>
-      <p className="Description">Descrição</p>
+      <h3 className="title"> {title}</h3>
+      <p className="Description">{description}</p>
 
       <div className="ActionsContainer">
         <ButtonComponent onClick={handleEdit}>
