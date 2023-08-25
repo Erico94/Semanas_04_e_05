@@ -3,7 +3,7 @@ const headers = { "Content-type": "application/json" };
 
 const Create = async (resource, data) => {
   return await fetch(`${base_url}/${resource}`, {
-    method: "POST",
+    method: 'POST',
     body: data,
     headers
   });
@@ -19,7 +19,7 @@ const ReadId = async (resource, id) => {
 
 const Update = async (resource, id) => {
     return await fetch(`${base_url}/${resource}/${id}`, {
-        method: "POST",
+        method: 'POST',
         body: data,
         headers
       });
@@ -27,7 +27,7 @@ const Update = async (resource, id) => {
 
 const Delete = async (resource, id) => {
   return await fetch(`${base_url}/${resource}/${id}`,{
-    method:"DELETE'"
+    method: 'DELETE'
   });
 };
 
