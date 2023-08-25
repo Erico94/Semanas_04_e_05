@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import * as Styled from "./ButtonComponent.style";
 
 const ButtonComponent = ({
   onClick,
@@ -7,11 +8,21 @@ const ButtonComponent = ({
   loading,
   children,
   type = "button",
+  color,
+  bg,
+  simetric = false
 }) => {
   return (
-    <button onClick={onClick} disabled={disabled} type={type}>
+    <Styled.Button
+      $color={color}
+      $bg={bg}
+      $simetric={simetric}
+      onClick={onClick}
+      disabled={disabled}
+      type={type}
+    >
       {loading ? "Carregando" : children}
-    </button>
+    </Styled.Button>
   );
 };
 
@@ -21,6 +32,9 @@ ButtonComponent.propTypes = {
   onClick: PropTypes.func,
   disabled: PropTypes.bool,
   type: PropTypes.string,
+  color: PropTypes.string,
+  bg: PropTypes.string,
+  simetric: PropTypes.bool
 };
 
 export default ButtonComponent;
