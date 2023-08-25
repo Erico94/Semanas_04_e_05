@@ -1,6 +1,9 @@
 import { Outlet, useLoaderData, useLocation, useNavigate } from "react-router-dom"
 import { HeaderComponent } from "../components/header/HeaderComponent";
 import ButtonComponent from "../components/button/ButtonComponent";
+import * as Styled from './Layout.style'
+
+
 export const AppLayout = () => {
   const navigate = useNavigate();
   const location = useLocation();
@@ -11,19 +14,19 @@ export const AppLayout = () => {
 
 
   return (
-    <div className="Layout">
+    <Styled.Layout>
       <HeaderComponent/>
 
-      <main className="Main">
-        <div className="ActionsContainer">
+      <Styled.Main>
+        <Styled.ActionsContainer>
           <ButtonComponent onClick={handleClick}>
             {location.pathname.includes('/todo') ? 'Ver tarefas' : 'Nova tarefa'}
             </ButtonComponent>
-        </div>
-        <section className="MainContainer">
+        </Styled.ActionsContainer>
+        <Styled.MainContainer>
           <Outlet />
-        </section>
-      </main>
-    </div>
+        </Styled.MainContainer>
+      </Styled.Main>
+    </Styled.Layout>
   );
 };
