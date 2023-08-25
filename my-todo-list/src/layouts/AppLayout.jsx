@@ -1,10 +1,12 @@
-import { Outlet, useNavigate } from "react-router-dom"
+import { Outlet, useLoaderData, useLocation, useNavigate } from "react-router-dom"
 import { HeaderComponent } from "../components/header/HeaderComponent";
 import ButtonComponent from "../components/button/ButtonComponent";
 export const AppLayout = () => {
   const navigate = useNavigate();
+  const location = useLocation();
   const handleClick = () =>{
-    navigate('todo')
+    const route = location.pathname.includes('/todo') ? '/' : '/todo';
+    navigate(route)
   }
 
 
@@ -14,7 +16,9 @@ export const AppLayout = () => {
 
       <main className="Main">
         <div className="ActionsContainer">
-          <ButtonComponent onClick={handleClick}>Criar tarefa</ButtonComponent>
+          <ButtonComponent onClick={handleClick}>
+            {location.pathname.includes('/todo') ? 'Ver tarefas' : 'Nova tarefa'}
+            </ButtonComponent>
         </div>
         <section className="MainContainer">
           <Outlet />

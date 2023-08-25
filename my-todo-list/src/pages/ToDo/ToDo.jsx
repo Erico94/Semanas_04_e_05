@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { FormComponent } from '../../components/form/FormComponent'
-import { useLocation, useParams } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 
 const todos = [
   {

@@ -9,11 +9,11 @@ export default function AppRoutes() {
     <Router>
       <Routes>
         <Route path="/" element={<AppLayout/>}>
-          <Route index path="/" element={<HomePage />} />
-          <Route path="todo" element={<ToDo />} />
+          <Route index element={<HomePage />} />
+          <Route path="/todo" element={<ToDo />} />
           <Route path="/todo/:id" element={<ToDo />} />
-          <Route path="*" element={<ErrorPage />} />
         </Route>
+          <Route path="*" element={<ErrorPage />} />
       </Routes>
     </Router>
   );

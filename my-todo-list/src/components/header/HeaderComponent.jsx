@@ -12,6 +12,7 @@ export const HeaderComponent = () => {
         <div className="ProfileIcon">
 
         </div>
+        <MdPerson/>
         <p>Erico</p>
       </div>
     </header>

@@ -1,10 +1,11 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import AppRoutes from './routes/AppRoutes'
+import React from "react";
+import ReactDOM from "react-dom/client";
+import AppRoutes from "./routes/AppRoutes";
+import { GlobalStyle } from "./Main.style";
 
-
-ReactDOM.createRoot(document.getElementById('root')).render(
+ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <AppRoutes/>
-  </React.StrictMode>,
-)
+    <GlobalStyle />
+    <AppRoutes />
+  </React.StrictMode>
+);

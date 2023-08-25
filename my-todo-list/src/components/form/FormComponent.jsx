@@ -1,13 +1,14 @@
 import React, { useEffect } from "react";
 import ButtonComponent from "../button/ButtonComponent";
-import { set, useForm } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import PropTypes from "prop-types";
 
-export const FormComponent = ({todo}) => {
+export const FormComponent = ({ todo }) => {
   const {
     register,
     handleSubmit,
     setValue,
+    watch,
     formState: { errors },
   } = useForm();
 
@@ -24,10 +25,9 @@ export const FormComponent = ({todo}) => {
 
   return (
     <form className="FormTodo" onSubmit={handleSubmit(onSubmit)}>
-    
-        <legend className="FormTitle">
-          {!todo ? 'Criar nova tarefa' : `Editar tarefa ${todo.title}`}
-        </legend>
+      <legend className="FormTitle">
+        {!todo ? "Criar nova tarefa" : `Editar tarefa ${todo.title}`}
+      </legend>
 
       <div className="InputContainer">
         <div className="InputGroup">
@@ -56,6 +56,10 @@ export const FormComponent = ({todo}) => {
               },
             })}
           ></textarea>
+          <div className="CounterContainer">
+            {watch('description')?.length || 0} de 50 caracteres.
+          </div>
+
           {errors.description && <p>{errors.title.message}</p>}
         </div>
       </div>
