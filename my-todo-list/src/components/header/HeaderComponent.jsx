@@ -1,20 +1,19 @@
-import React from 'react'
-import {MdPerson} from 'react-icons/md'
+import { MdPerson } from "react-icons/md";
+import * as Styled from "./HeaderComponent.style";
 
 export const HeaderComponent = () => {
   return (
-    <header className="Header">
-      <h1 className="Logo">
-        My <span>Todo</span>
-      </h1>
+    <Styled.Header>
+      <Styled.Logo>
+        My<span>Todo</span>App
+      </Styled.Logo>
 
-      <div className="ProfileContainer">
-        <div className="ProfileIcon">
-
-        </div>
-        <MdPerson/>
-        <p>Erico</p>
-      </div>
-    </header>
-  )
-}
+      <Styled.ProfileContainer>
+        <Styled.ProfileIcon>
+          <MdPerson />
+        </Styled.ProfileIcon>
+        <p>Érico Mussulin</p>
+      </Styled.ProfileContainer>
+    </Styled.Header>
+  );
+};
