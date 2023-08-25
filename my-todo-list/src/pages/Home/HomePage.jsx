@@ -16,7 +16,6 @@ export const HomePage = () => {
 
   useEffect ( () =>{
     getTasks();
-    console.log(tasks)
   },[])
 
   return (
