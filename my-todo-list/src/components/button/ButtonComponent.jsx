@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import * as Styled from "./ButtonComponent.style";
 
-const ButtonComponent = ({
+export const ButtonComponent = ({
   onClick,
   disabled,
   loading,

@@ -12,8 +12,8 @@ export default function AppRoutes() {
           <Route index element={<HomePage />} />
           <Route path="/todo" element={<ToDo />} />
           <Route path="/todo/:id" element={<ToDo />} />
-        </Route>
           <Route path="*" element={<ErrorPage />} />
+        </Route>
       </Routes>
     </Router>
   );
