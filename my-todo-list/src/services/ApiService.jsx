@@ -1,40 +1,45 @@
-const base_url = "http://localhost/3000";
+const base_url = "http://localhost:3000";
 
-export class ApiService {
+export  class ApiService {
   url;
   headers = { "Content-type": "application/json" };
 
   constructor(resource) {
-    this.url = `${this.url}/${resource}`;
+    this.url = `${base_url}/${resource}`;
   }
 
   Create = async (data) => {
-    return await fetch(this.url, {
+    const response = await fetch(this.url, {
       method: 'POST',
       body: data,
       headers: this.headers,
     });
+    return response.json();
   };
 
   Read = async () => {
-    return await fetch(this.url);
+    const response =  await fetch(this.url);
+    return response.json();
   };
 
   ReadId = async (id) => {
-    return await fetch(`${this.url}/${id}`);
+    const response =  await fetch(`${this.url}/${id}`);
+    return response.json();
   };
 
   Update = async (data, id) => {
-    return await fetch(`${this.url}/${id}`, {
+    const response = await fetch(`${this.url}/${id}`, {
       method: 'POST',
       body: data,
       headers: this.headers,
     });
+    return response.json();
   };
 
   Delete = async (id) => {
-    return await fetch(`${this.url}/${id}`, {
+    const response = await fetch(`${this.url}/${id}`, {
       method: 'DELETE',
     });
+    return response.json();
   };
 }
