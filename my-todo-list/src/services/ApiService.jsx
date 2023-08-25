@@ -1,3 +1,5 @@
+import { json } from "react-router-dom";
+
 const base_url = "http://localhost:3000";
 
 export  class ApiService {
@@ -29,8 +31,8 @@ export  class ApiService {
 
   Update = async (data, id) => {
     const response = await fetch(`${this.url}/${id}`, {
-      method: 'POST',
-      body: data,
+      method: 'PATCH',
+      body: JSON.stringify(data),
       headers: this.headers,
     });
     return response.json();

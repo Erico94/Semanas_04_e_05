@@ -1,16 +1,16 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect } from "react";
 import { CardComponent } from "../../components/card/CardComponent";
-import { MockUtils } from "../../utils/mock";
 import * as Styled from "./HomePage.style";
 import { ApiService } from "../../services/ApiService"
+import { TodosContext } from "../../contexts/TodosContext";
 
 export const HomePage = () => {
-  const [tasks, setTasks] = useState([]);
+  const {todos, setTodos} = useContext(TodosContext); 
   const service = new ApiService('tasks');
 
   const getTasks = async () =>{
     await service.Read().then((response)=>{
-      setTasks(response);
+      setTodos(response);
     })
   }
 
@@ -21,7 +21,7 @@ export const HomePage = () => {
   return (
     <Styled.HomeContainer>
       <Styled.CardsContainer>
-        {tasks.map((toDo) => (
+        {todos.map((toDo) => (
           <CardComponent todo={toDo} key={toDo.id} />
         ))}
       </Styled.CardsContainer>

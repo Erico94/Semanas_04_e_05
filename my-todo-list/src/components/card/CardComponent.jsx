@@ -1,23 +1,48 @@
-import React from "react";
+import React, { useContext } from "react";
 import ButtonComponent from "../button/ButtonComponent";
 import { MdEdit, MdDelete, MdAutorenew } from "react-icons/md";
 import PropTypes from "prop-types";
 import { useNavigate } from "react-router-dom";
 import * as Styled from './CardComponent.style'
 import { StyleUtils } from "../../utils/style";
+import { ApiService } from "../../services/ApiService";
+import { TodosContext } from "../../contexts/TodosContext";
 
 export const CardComponent = ({ todo }) => {
   const { id, title, description, status } = todo;
   const navigate = useNavigate();
+  const taskService = new ApiService('tasks');
+  const {todos, setTodos} = useContext(TodosContext);
+
+  const getTasks = async () =>{
+    await taskService.Read().then((response)=>{
+      setTodos(response);
+    })
+  }
   
   const handleEdit = () => {
     navigate(`/todo/${id}`);
   };
-  const handleDelete = () => {
 
+  const handleDelete = async () => {
+    const confirma = confirm("Deseja mesmo excluir a tarefa?");
+    if(confirma){
+    await taskService.Delete(id).then((response)=>console.log(response));
+    }
+    getTasks();
   };
-  const handleStatus = () => {
 
+  const handleStatus = async () => {
+    const confirma = confirm("Deseja atualizar o estado da tarefa?");
+    if(confirma){
+      const statusData = {
+        status : !status
+      }
+      await taskService.Update(statusData, id).then((response)=>{
+        console.log(`${response.title} atualizado.`)
+      })
+    }
+    getTasks();
   };
 
 
