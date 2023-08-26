@@ -1,9 +1,15 @@
-import React, { useEffect } from "react";
+import React, { useContext, useEffect } from "react";
 import ButtonComponent from "../button/ButtonComponent";
 import { useForm } from "react-hook-form";
 import PropTypes from "prop-types";
+import { TodosContext } from "../../contexts/TodosContext";
+import { ApiService } from "../../services/ApiService";
+import { useNavigate } from "react-router-dom";
+import * as Styled from './FormComponent.style';
 
 export const FormComponent = ({ todo }) => {
+  const apiService = new ApiService("tasks");
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -12,8 +18,15 @@ export const FormComponent = ({ todo }) => {
     formState: { errors },
   } = useForm();
 
-  const onSubmit = (data) => {
-    console.log(data);
+  const onSubmit = async (data) => {
+    todo
+      ? await apiService
+          .Update(data, todo.id)
+          .then((response) => alert(`${response.title} atualizado com sucesso`))
+      : await apiService.Create(data).then((response) => {
+          alert(`${response.title} criada com sucesso.`);
+        });
+        navigate('/');
   };
 
   useEffect(() => {
@@ -24,15 +37,15 @@ export const FormComponent = ({ todo }) => {
   }, [todo]);
 
   return (
-    <form className="FormTodo" onSubmit={handleSubmit(onSubmit)}>
-      <legend className="FormTitle">
+    <Styled.FormTodo onSubmit={handleSubmit(onSubmit)}>
+      <Styled.FormTitle>
         {!todo ? "Criar nova tarefa" : `Editar tarefa ${todo.title}`}
-      </legend>
+      </Styled.FormTitle>
 
-      <div className="InputContainer">
-        <div className="InputGroup">
-          <label htmlFor="title">Título</label>
-          <input
+      <Styled.InputsContainer>
+        <Styled.InputGroup>
+          <Styled.Label htmlFor="title">Título</Styled.Label>
+          <Styled.Input
             type="text"
             id="title"
             {...register("title", {
@@ -40,11 +53,11 @@ export const FormComponent = ({ todo }) => {
             })}
           />
           {errors.title && <p>{errors.title.message}</p>}
-        </div>
+        </Styled.InputGroup>
 
-        <div className="InputGroup">
-          <label htmlFor="description">Descrição</label>
-          <textarea
+        <Styled.InputGroup>
+          <Styled.Label htmlFor="description">Descrição</Styled.Label>
+          <Styled.TextArea
             id="description"
             cols="30"
             rows="10"
@@ -55,17 +68,17 @@ export const FormComponent = ({ todo }) => {
                 message: "Esse campo deve possuir no máximo 50 caracteres.",
               },
             })}
-          ></textarea>
-          <div className="CounterContainer">
-            {watch('description')?.length || 0} de 50 caracteres.
-          </div>
+          ></Styled.TextArea>
+          <Styled.CounterContainer>
+            {watch("description")?.length || 0} de 50 caracteres.
+          </Styled.CounterContainer>
 
-          {errors.description && <p>{errors.title.message}</p>}
-        </div>
-      </div>
+          {errors.description && <p>{errors.description.message}</p>}
+        </Styled.InputGroup>
+      </Styled.InputsContainer>
 
       <ButtonComponent type="submit">Salvar</ButtonComponent>
-    </form>
+    </Styled.FormTodo>
   );
 };
 

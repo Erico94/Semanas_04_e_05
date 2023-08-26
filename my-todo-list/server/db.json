@@ -4,7 +4,7 @@
       "id": 1,
       "title": "Tarefa 1",
       "description": "Lorem ipsum dolor sit",
-      "status": false
+      "status": true
     },
     {
       "id": 2,
@@ -15,19 +15,13 @@
     {
       "id": 3,
       "title": "Tarefa 3",
-      "description": "Lorem ipsum dolor sit",
+      "description": "how how how ",
       "status": false
     },
     {
-      "id": 4,
-      "title": "Tarefa 4",
-      "description": "Lorem ipsum dolor sit",
-      "status": true
-    },
-    {
-      "id": 5,
-      "title": "Tarefa 5",
-      "description": "Lorem ipsum dolor sit",
+      "title": "lavar louça",
+      "description": "Mais tarde eu lavo",
+      "id": 6,
       "status": false
     }
   ]
