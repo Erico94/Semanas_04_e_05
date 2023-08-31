@@ -13,16 +13,15 @@
       "status": true
     },
     {
-      "id": 3,
-      "title": "Tarefa 3",
-      "description": "how how how ",
-      "status": false
-    },
-    {
       "title": "lavar louça",
       "description": "Mais tarde eu lavo",
       "id": 6,
-      "status": false
+      "status": true
+    },
+    {
+      "title": "Estudar",
+      "description": "Estudar pelo menos duas horas hoje.",
+      "id": 7
     }
   ]
 }
