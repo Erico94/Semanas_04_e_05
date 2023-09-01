@@ -47,7 +47,7 @@ export const CardComponent = ({ todo }) => {
 
 
   return (
-    <Styled.CardContainer $status={status}> 
+    <Styled.CardContainer $status={status} data-testid = 'card-component'> 
       <Styled.Title> {title}</Styled.Title>
       <Styled.Description>{description}</Styled.Description>
 
