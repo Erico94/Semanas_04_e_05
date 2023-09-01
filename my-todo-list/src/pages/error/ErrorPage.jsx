@@ -16,7 +16,6 @@ export const ErrorPage = () => {
       <p>Não Conseguimos encontrar a página solicitada!</p>
       <ButtonComponent  onClick={() => { navigateTo('/') }}>
         Voltar para pagina inicial
-
       </ButtonComponent>
     </Styled.ErrorContainer>
   );
