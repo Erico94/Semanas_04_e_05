@@ -1,7 +1,7 @@
 import '@testing-library/jest-dom';
 import {BrowserRouter} from 'react-router-dom'
 import {ErrorPage} from './ErrorPage'
-import { render, screen } from '@testing-library/react';
+import { fireEvent,render, screen } from '@testing-library/react';
 import { beforeEach, describe, expect } from 'vitest';
 import {vi } from 'vitest';
 
