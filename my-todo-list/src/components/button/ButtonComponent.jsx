@@ -10,10 +10,11 @@ export const ButtonComponent = ({
   type = "button",
   color,
   bg,
-  simetric = false
+  simetric = false,
 }) => {
   return (
     <Styled.Button
+      data-testid="button-component"
       $color={color}
       $bg={bg}
       $simetric={simetric}
@@ -34,7 +35,7 @@ ButtonComponent.propTypes = {
   type: PropTypes.string,
   color: PropTypes.string,
   bg: PropTypes.string,
-  simetric: PropTypes.bool
+  simetric: PropTypes.bool,
 };
 
 export default ButtonComponent;

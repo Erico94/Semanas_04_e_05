@@ -1,14 +1,14 @@
-import { useNavigate } from "react-router-dom"
-import { ButtonComponent } from "../../components/button/ButtonComponent"
+import { useNavigate } from "react-router-dom";
+import { ButtonComponent } from "../../components/button/ButtonComponent";
 
-import * as Styled from './ErrorPage.style'
+import * as Styled from "./ErrorPage.style";
 
 export const ErrorPage = () => {
   const navigate = useNavigate();
-  
+
   const navigateTo = (route) => {
     navigate(route);
-  }
+  };
 
   return (
     <Styled.ErrorContainer data-testid='error-page-component'>
@@ -16,7 +16,8 @@ export const ErrorPage = () => {
       <p>Não Conseguimos encontrar a página solicitada!</p>
       <ButtonComponent  onClick={() => { navigateTo('/') }}>
         Voltar para pagina inicial
+
       </ButtonComponent>
     </Styled.ErrorContainer>
-  )
-}
+  );
+};

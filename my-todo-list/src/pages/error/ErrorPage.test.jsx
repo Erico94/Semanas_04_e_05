@@ -1,9 +1,9 @@
 import '@testing-library/jest-dom';
 import {BrowserRouter} from 'react-router-dom'
 import {ErrorPage} from './ErrorPage'
-import { render, screen, fireEvent } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import { beforeEach, describe, expect } from 'vitest';
-import { vi } from 'vitest';
+import {vi } from 'vitest';
 
 const mockNavigateTo = vi.fn();
 
@@ -15,8 +15,6 @@ vi.mock('react-router-dom', async()=>{
         useNavigate: () => mockNavigateTo,
     }
 })
-
-
 
 
 
